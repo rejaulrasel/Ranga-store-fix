@@ -9,18 +9,18 @@ const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
     const image = product.image;
-    const title = (product.title).slice(0,35)
+    const title = (product.title).slice(0, 35)
     const div = document.createElement("div");
     div.classList.add("product");
     div.innerHTML = `<div class="single-product">
       <div>
     <img class="product-image" src="${image}"></img>
       </div>
-      <h3>${title}.</h3>
-      <p>Category: ${product.category}</p>
-      <h5 class=' px-4 py-1'><i class="fas fa-star text-success"></i>${product.rating.rate} <span class="ms-3">Reviews: ${product.rating.count}</span></h5>
+      <h4>${title}.</h4>
+      <h5>Category: ${product.category}</h5>
+      <h5 class=' px-4 py-1'>${product.rating.rate}<i class="fas fa-star text-secondary"></i><span class="ms-3">Reviews: ${product.rating.count}</span></h5>
 
-      <h2>Price: $ ${product.price}</h2>
+      <h3>Price: $ ${product.price}</h3>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
       <button id="details-btn" class="btn btn-danger">Details</button></div>
       `;
@@ -67,11 +67,11 @@ const updateTaxAndCharge = () => {
     setInnerText("delivery-charge", 30);
     setInnerText("total-tax", priceConverted * 0.2);
   }
-  else if (priceConverted > 400) {
+  if (priceConverted > 400) {
     setInnerText("delivery-charge", 50);
     setInnerText("total-tax", priceConverted * 0.3);
   }
-  else if (priceConverted > 500) {
+  if (priceConverted > 500) {
     setInnerText("delivery-charge", 60);
     setInnerText("total-tax", priceConverted * 0.4);
   }
